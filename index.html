@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cristina & Sergio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- SPLASH INTRO -->
+<section class="splash" id="splash">
+  <img src="assets/intro-clouds.jpg">
+  <p>Un momento eterno está por comenzar…</p>
+</section>
+
+<!-- CONTENIDO REAL -->
+<div id="mainContent" class="hidden">
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Cristina & Sergio</h1>
+    <p class="date">15 · Junio · 2026</p>
+    <button class="btn-main" onclick="openRSVP()">Confirmar asistencia</button>
+  </section>
+
+  <!-- BIENVENIDA -->
+  <section class="welcome">
+    <p>
+      Hay momentos que marcan el alma para siempre.<br><br>
+      Con la bendición de Dios, hemos decidido caminar juntos y unir nuestras vidas ante Él.<br><br>
+      Nos encantaría que nos acompañaras.
+    </p>
+  </section>
+
+  <!-- DETALLES -->
+  <section class="details">
+    <div class="block">
+      <h3>📅 Fecha</h3>
+      <p>15 de Junio de 2026</p>
+      <p>Ceremonia: 5:00 PM</p>
+      <p>Recepción: 7:00 PM</p>
+    </div>
+
+    <div class="block">
+      <h3>📍 Ceremonia</h3>
+      <p>Iglesia San José</p>
+      <p>CDMX</p>
+    </div>
+
+    <div class="block">
+      <h3>📍 Recepción</h3>
+      <p>Salón Real</p>
+      <p>CDMX</p>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta">
+    <button class="btn-main" onclick="openRSVP()">
+      Confirmar por WhatsApp
+    </button>
+  </section>
+
+  <footer>
+    <p>Con cariño,<br>Cristina & Sergio</p>
+  </footer>
+
+</div>
+
+<!-- MODAL RSVP -->
+<div id="rsvpModal" class="modal" onclick="closeRSVP(event)">
+  <div class="modal-content">
+    <h2>Confirmar asistencia</h2>
+
+    <input id="name" placeholder="Nombre completo">
+    
+    <select id="assist">
+      <option value="">¿Asistirá?</option>
+      <option>Sí</option>
+      <option>No</option>
+    </select>
+
+    <input id="guests" type="number" placeholder="Número de acompañantes">
+
+    <textarea id="food" placeholder="Alergias o restricciones"></textarea>
+
+    <button class="btn-main" onclick="sendWhatsApp()">
+      Enviar por WhatsApp
+    </button>
+
+    <button class="btn-cancel" onclick="closeRSVP()">
+      Cerrar
+    </button>
+  </div>
+</div>
+
+<script>
+/* SPLASH */
+setTimeout(() => {
+  const splash = document.getElementById("splash");
+  splash.classList.add("fade");
+
+  setTimeout(() => {
+    splash.remove();
+    document.getElementById("mainContent").classList.remove("hidden");
+  }, 800);
+}, 3500);
+
+/* MODAL */
+function openRSVP(){
+  document.getElementById("rsvpModal").classList.add("show");
+}
+
+function closeRSVP(e){
+  if(!e || e.target.classList.contains("modal")){
+    document.getElementById("rsvpModal").classList.remove("show");
+  }
+}
+
+/* WHATSAPP */
+function sendWhatsApp(){
+  const name = document.getElementById("name").value;
+  const assist = document.getElementById("assist").value;
+  const guests = document.getElementById("guests").value;
+  const food = document.getElementById("food").value;
+
+  const text = 
+`Hola, soy ${name}.
+Confirmo: ${assist}
+Acompañantes: ${guests}
+Alergias: ${food}`;
+
+  const phone = "5618326661";
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+  window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
