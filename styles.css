@@ -27,13 +27,9 @@ body{
   transition:opacity .8s;
 }
 
-.splash.fade{
-  opacity:0;
-}
+.splash.fade{opacity:0}
 
-.splash img{
-  width:220px;
-}
+.splash img{width:220px}
 
 .splash p{
   margin-top:20px;
@@ -65,8 +61,13 @@ body{
 }
 
 .date{
-  margin:18px 0 35px;
+  margin:18px 0 10px;
   letter-spacing:4px;
+}
+
+.countdown{
+  margin-bottom:35px;
+  font-size:18px;
 }
 
 /* BOTÓN */
@@ -130,9 +131,7 @@ footer{
   z-index:100;
 }
 
-.modal.show{
-  display:flex;
-}
+.modal.show{display:flex}
 
 .modal-content{
   background:white;
